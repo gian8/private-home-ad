@@ -3,8 +3,7 @@ const pup = require('./scraping.js');
 const Vision = require('vision')
 const Handlebars = require('handlebars')
 const server = hapi.server({
-	port: process.env.PORT || 4000,
-	host: 'localhost'
+	port: process.env.PORT || 4000
 });
 
 async function liftOff() {
