@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "./node_modules/.bin/mocha",
-		"start": "nodemon src/index.js"
+		"start": "node src/index.js",
+		"start-w": "nodemon src/index.js"
 	},
 	"repository": {
 		"type": "git",
