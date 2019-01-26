@@ -19,8 +19,8 @@
 		"chai": "^4.1.2"
 	},
 	"dependencies": {
-		"hapi": "^17.5.0",
 		"handlebars": "^4.0.12",
+		"hapi": "^17.8.1",
 		"jquery": "^3.3.1",
 		"jsdom": "^13.2.0",
 		"mocha": "^5.2.0",
