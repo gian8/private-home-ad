@@ -19,9 +19,11 @@
 		"hapi": "^17.5.0"
 	},
 	"dependencies": {
+		"handlebars": "^4.0.12",
 		"jquery": "^3.3.1",
 		"jsdom": "^13.2.0",
 		"mocha": "^5.2.0",
-		"puppeteer": "^1.11.0"
+		"puppeteer": "^1.11.0",
+		"vision": "^5.4.4"
 	}
 }
