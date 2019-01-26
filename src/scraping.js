@@ -28,7 +28,6 @@ module.exports = {
 			foundAd = await pagination(page, ++pagIndex, foundAd);
 			await page.waitFor(timer);
 			foundAd = await pagination(page, ++pagIndex, foundAd);
-
 			await browser.close();
 			return foundAd;
 		}
@@ -48,11 +47,13 @@ var pagination = async function (page, pagIndex, foundAd) {
 
 
 		let privateItems = privs.find('.listing-item_body > .listing-item_body--content > .titolo > a');
+		let costs = privs.find('.lif__pricing');
 		var titleLinkArray = [];
 		for (var i = 0; i < privateItems.length; i++) {
 			titleLinkArray[i] = {
 				title: privateItems[i].innerText.trim(),
-				link: privateItems[i].getAttribute("href")
+				link: privateItems[i].getAttribute("href"),
+				price: costs[i].innerText.trim()
 			};
 		}
 		return titleLinkArray;
