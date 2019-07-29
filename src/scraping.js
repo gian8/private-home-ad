@@ -38,7 +38,16 @@ module.exports = {
 }
 
 var pagination = async function (url, page, pagIndex, foundAd) {
-	let urlIndex = url.replace(/pag=([0-9]+)/gm, `pag=${pagIndex}`);
+	const reg = /pag=([0-9]+)/gm;
+	let urlIndex = url;
+
+	if (reg.test(url)) {
+		urlIndex = url.replace(/pag=([0-9]+)/gm, `pag=${pagIndex}`);
+	}
+	else {
+		urlIndex += `&pag=${pagIndex}`
+	}
+
 	await page.goto(urlIndex);
 	//await page.screenshot({ path: `visitpage/page${pagIndex}.png` });
 
