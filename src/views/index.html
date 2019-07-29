@@ -1,14 +1,60 @@
-<div
-	style='flex-flow: column; display: flex; width: 415px; margin: 20% auto; text-align: center; font-size:24px; text-transform: uppercase;'>
-	<img style="margin: 0 auto 16px;" width="302" height="50" class="hidden-xs" alt="Immobiliare.it"
-		src="https://img.im-cdn.it/assets/2019010901/img/common/logo.svg">
-	<!--<a href='/search' style=' font-weight:700; font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; width: 400px; padding:16px; border-radius: 20px 20px; background-color: #c12400;color: white;text-decoration:none;'>
-		Search for private Ad
-	</a>-->
-	<form action="/search">
-		Immobiliare Url:<br>
-		<input type="text" name="imUrl"
-			value="https://www.immobiliare.it/ricerca.php?idCategoria=1&idContratto=2&idTipologia=&sottotipologia=&idTipologiaStanza=&idFasciaPrezzo=&idNazione=IT&idRegione=&idProvincia=&idComune=&idLocalita=&idAreaGeografica=&prezzoMinimo=&prezzoMassimo=500&balcone=&balconeOterrazzo=&boxOpostoauto=&stato=&terrazzo=&bagni=&mappa=&foto=&superficie=&superficieMinima=40&superficieMassima=&raggio=&locali=&localiMinimo=&localiMassimo=&criterio=dataModifica&ordine=desc&map=0&tipoProprieta=&arredato=&inAsta=&noAste=&aReddito=&fumatore=&animali=&franchising=&flagNc=&gayfriendly=&internet=&sessoInquilini=&vacanze=&categoriaStanza=&fkTipologiaStanza=&ascensore=&classeEnergetica=&verticaleAste=&occupazioneInquilini=&pag=1&vrt=45.080090736644%2C7.656063080358%3B45.065567558843%2C7.631996155833%3B45.057443637863%2C7.638519288157%3B45.052835527869%2C7.64229583845%3B45.050410057671%2C7.653453827952%3B45.049682396554%2C7.681949616526%3B45.059383783612%2C7.687271119212%3B45.070174642796%2C7.675769806956%3B45.077569448459%2C7.66821670637"><br>
-		<input type="submit" value="Submit">
-	</form>
-</div>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<style>
+		.mt-5 {
+			margin-top: 5%;
+		}
+	</style>
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-md-2"><img width="80%" src="assets/im.PNG" alt=""></div>
+			<div class="col-md-10">
+				<div>
+					<h1><strong>Ricerca per annunci privati su Immobiliare.it </strong></h1>
+					<p>Il filtro di ricerca per annunci privati su immobiliare.it è disponibile qui</p>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-12">
+				<h2>1. Visita immobiliare.it e imposta la tua ricerca</h2>
+			</div>
+			<div class="col-md-12"><img width="100%" src="assets/search.PNG" alt=""></div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-12">
+				<h2>2. Dopo aver cliccato sul pulsante "cerca", copia l'url della pagina</h2>
+			</div>
+			<div class="col-md-12"><img width="100%" src="assets/urlToCopy.PNG" alt=""></div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-12">
+				<h2>3. Incolla l'url nel campo qui sotto e Ricerca gli annunci dei privati</h2>
+			</div>
+			<div id="formSearch" class="col-md-12">
+				<form action="/search" class="form-inline" style="margin-top: 20px">
+					<div class="form-group mb-2" style="width: 50%">
+						<label for="imUrl" class="sr-only">Immobiliare Url:</label>
+						<input type="text" class="form-control" id="imUrl" style="width: 100%" name="imUrl"
+							placeholder="https://www.immobiliare.it/ricerca.php?idCategoria=1&idContratto=2&idTipologia=&sottotipologia=&idTipologiaStanza=&idFasciaPrezzo=&idNazione=IT&idRegione=&idProvincia=&idComune=&idLocalita=&idAreaGeografica=&prezzoMinimo=&prezzoMassimo=500&balcone=&balconeOterrazzo=&boxOpostoauto=&stato=&terrazzo=&bagni=&mappa=&foto=&superficie=&superficieMinima=40&superficieMassima=&raggio=&locali=&localiMinimo=&localiMassimo=&criterio=dataModifica&ordine=desc&map=0&tipoProprieta=&arredato=&inAsta=&noAste=&aReddito=&fumatore=&animali=&franchising=&flagNc=&gayfriendly=&internet=&sessoInquilini=&vacanze=&categoriaStanza=&fkTipologiaStanza=&ascensore=&classeEnergetica=&verticaleAste=&occupazioneInquilini=&pag=1&vrt=45.080090736644%2C7.656063080358%3B45.065567558843%2C7.631996155833%3B45.057443637863%2C7.638519288157%3B45.052835527869%2C7.64229583845%3B45.050410057671%2C7.653453827952%3B45.049682396554%2C7.681949616526%3B45.059383783612%2C7.687271119212%3B45.070174642796%2C7.675769806956%3B45.077569448459%2C7.66821670637">
+					</div>
+					<input id="sub" type="submit" value="Cerca" class="btn mb-2" style="background-color: #c12400;
+					width: 210px;
+					color: white;">
+				</form>
+				<p style="margin-top:16px; margin-bottom: 100px; color: gray">
+					Aspettare circa 10 secondi prima di vedere i risultati
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
