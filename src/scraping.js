@@ -8,7 +8,7 @@ global.document = document;
 var $ = jQuery = require('jquery')(window);
 
 module.exports = {
-	example: async function () {
+	scrap: async function (url) {
 		let pagIndex = 1;
 		let foundAd = [];
 		const timer = 200;
@@ -19,15 +19,15 @@ module.exports = {
 
 			await page.setViewport({ width: 1024, height: 600 })
 			await page.waitFor(timer);
-			foundAd = await pagination(page, pagIndex, foundAd);
+			foundAd = await pagination(url, page, pagIndex, foundAd);
 			await page.waitFor(timer);
-			foundAd = await pagination(page, ++pagIndex, foundAd);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
 			await page.waitFor(timer);
-			foundAd = await pagination(page, ++pagIndex, foundAd);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
 			await page.waitFor(timer);
-			foundAd = await pagination(page, ++pagIndex, foundAd);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
 			await page.waitFor(timer);
-			foundAd = await pagination(page, ++pagIndex, foundAd);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
 			await browser.close();
 			return foundAd;
 		}
@@ -37,14 +37,14 @@ module.exports = {
 	}
 }
 
-var pagination = async function (page, pagIndex, foundAd) {
-	await page.goto(`https://www.immobiliare.it/ricerca.php?idCategoria=1&idContratto=2&idTipologia=&sottotipologia=&idTipologiaStanza=&idFasciaPrezzo=&idNazione=IT&idRegione=&idProvincia=&idComune=&idLocalita=&idAreaGeografica=&prezzoMinimo=&prezzoMassimo=500&balcone=&balconeOterrazzo=&boxOpostoauto=&stato=&terrazzo=&bagni=&mappa=&foto=&superficie=&superficieMinima=40&superficieMassima=&raggio=&locali=&localiMinimo=&localiMassimo=&criterio=dataModifica&ordine=desc&map=0&tipoProprieta=&arredato=&inAsta=&noAste=&aReddito=&fumatore=&animali=&franchising=&flagNc=&gayfriendly=&internet=&sessoInquilini=&vacanze=&categoriaStanza=&fkTipologiaStanza=&ascensore=&classeEnergetica=&verticaleAste=&occupazioneInquilini=&pag=${pagIndex}&vrt=45.080090736644%2C7.656063080358%3B45.065567558843%2C7.631996155833%3B45.057443637863%2C7.638519288157%3B45.052835527869%2C7.64229583845%3B45.050410057671%2C7.653453827952%3B45.049682396554%2C7.681949616526%3B45.059383783612%2C7.687271119212%3B45.070174642796%2C7.675769806956%3B45.077569448459%2C7.66821670637`);
+var pagination = async function (url, page, pagIndex, foundAd) {
+	let urlIndex = url.replace(/pag=([0-9]+)/gm, `pag=${pagIndex}`);
+	await page.goto(urlIndex);
 	//await page.screenshot({ path: `visitpage/page${pagIndex}.png` });
 
 	var news = await page.evaluate(() => {
 		var adContainer = $('#listing-container');
-		let privs = adContainer.find('li').not('.listing-item--tiny'); //devo prendere i li
-
+		let privs = adContainer.find('li').not('.listing-item--tiny'); //select <li>
 
 		let privateItems = privs.find('.listing-item_body > .listing-item_body--content > .titolo > a');
 		let costs = privs.find('.lif__pricing');

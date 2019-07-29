@@ -6,7 +6,7 @@ const server = hapi.server({
 	port: process.env.PORT || 4000
 });
 
-async function liftOff() {
+async function liftOff () {
 	await server.register({
 		plugin: require('vision')  // add template rendering support in hapi
 	})
@@ -16,8 +16,7 @@ async function liftOff() {
 		engines: {
 			html: Handlebars
 		},
-		path: __dirname + '/views',
-		//layout: 'layout'
+		path: __dirname + '/views'
 	})
 }
 
@@ -36,7 +35,8 @@ const init = async () => {
 			method: 'GET',
 			path: '/search',
 			handler: async (req, reply) => {
-				var dataArray = await pup.example();
+				const imUrl = req.query.imUrl;
+				var dataArray = await pup.scrap(imUrl);
 				var dataObj = {
 					data: dataArray
 				};
