@@ -18,16 +18,43 @@ module.exports = {
 			const page = await browser.newPage();
 
 			await page.setViewport({ width: 1024, height: 600 })
+
 			await page.waitFor(timer);
 			foundAd = await pagination(url, page, pagIndex, foundAd);
+
 			await page.waitFor(timer);
 			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
 			await page.waitFor(timer);
 			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
 			await page.waitFor(timer);
 			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
 			await page.waitFor(timer);
 			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
+			await page.waitFor(timer);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
+			await page.waitFor(timer);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
+			await page.waitFor(timer);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
+			await page.waitFor(timer);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
+			await page.waitFor(timer);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
+			await page.waitFor(timer);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
+			await page.waitFor(timer);
+			foundAd = await pagination(url, page, ++pagIndex, foundAd);
+
 			await browser.close();
 			return foundAd;
 		}
@@ -55,13 +82,14 @@ var pagination = async function (url, page, pagIndex, foundAd) {
 		var adContainer = $('#listing-container');
 		let privs = adContainer.find('li').not('.listing-item--tiny'); //select <li>
 
-		let privateItems = privs.find('.listing-item_body > .listing-item_body--content > .titolo > a');
+		let privateItems = privs.find('.listing-item_body').not(':has(.listing-item_action > .listing-item_action--logo )')
 		let costs = privs.find('.lif__pricing');
 		var titleLinkArray = [];
 		for (var i = 0; i < privateItems.length; i++) {
+			var title = $(privateItems[i]).find('.titolo a');
 			titleLinkArray[i] = {
-				title: privateItems[i].innerText.trim(),
-				link: privateItems[i].getAttribute("href"),
+				title: title.text().trim(),
+				link: title.attr("href"),
 				price: costs[i].innerText.trim()
 			};
 		}
