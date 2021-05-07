@@ -20,7 +20,7 @@
 	},
 	"dependencies": {
 		"@hapi/inert": "^5.2.1",
-		"handlebars": "^4.3.0",
+		"handlebars": "^4.7.7",
 		"hapi": "^17.8.1",
 		"jquery": "^3.4.1",
 		"jsdom": "^13.2.0",
